@@ -406,10 +406,11 @@ CONTAINS
         ! Inputs
         REAL(8), INTENT(IN) :: CP(4)    ! Parameters defining the parameterizable Cp(lambda) function
         REAL(8), INTENT(IN) :: lambda    ! Estimated or measured tip-speed ratio input
+        REAL(8)             :: cpfun        ! Cp
         
         ! Lookup
-        CPfunction = exp(-CP(1)/lambda)*(CP(2)/lambda-CP(3))+CP(4)*lambda
-        CPfunction = saturate(CPfunction, 0.001D0, 1.0D0)
+        cpfun         = exp(-CP(1)/lambda)*(CP(2)/lambda-CP(3))+CP(4)*lambda
+        CPfunction = saturate(cpfun, 0.001D0, 1.0D0)
         
     END FUNCTION CPfunction
 !-------------------------------------------------------------------------------------------------------------------------------
